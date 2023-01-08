@@ -88,3 +88,84 @@ private static final Logger log = LogManager.getLogger(MainController.class);
 
 
 and we can use the loggers in other @Component classes
+	
+	
+	
+	
+////////logging in diff configurations in springboot
+	
+	1  Log4j using an XML file with Spring Boot, you can create a log4j2.xml file in the src/main/resources directory. Here is an example log4j2.xml file that sets the root logger level to INFO and outputs log messages to the console:
+	<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
+
+	
+	
+	2 To configure Log4j using properties in Spring Boot, you can create an application.properties file in the src/main/resources directory. Here is an example application.properties file that sets the root logger level to INFO and outputs log messages to the console:
+	
+	log4j.rootLogger=INFO, console
+log4j.appender.console=org.apache.log4j.ConsoleAppender
+log4j.appender.console.layout=org.apache.log4j.PatternLayout
+log4j.appender.console.layout.ConversionPattern=%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+
+	
+	
+	3 You can also use an application.yml file to specify Log4j properties in YAML format. Here is the equivalent configuration to the above application.properties file, but in YAML format:
+	
+	log4j:
+  rootLogger: INFO, console
+  appender:
+    console:
+      type: consoleAppender
+      layout:
+        type: patternLayout
+        conversionPattern: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
+	
+	
+	
+	saving the log file in xml 
+	
+	<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+        </console>
+        <File name="MyFile" fileName="myapp.log"> //just add this .
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="MyFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
+
+	
+	2 saving the log file , properties file
+	
+	saving in default path
+	log4j.appender.file.File=myapp.log
+	
+	in desired path
+	log4j.appender.file.File=logs/myapp.log
+	
+	
+	
+	
+	
+	
+	
