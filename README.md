@@ -18,6 +18,27 @@ In a Spring Boot application, the logging configuration can be set in the applic
 
 It's important to configure logging properly in a Spring Boot application to ensure that the right amount of information is logged for the appropriate use case, such as debugging, analysis, or reporting.
 
+## Levels of logging
+ In logging, levels are used to categorize the severity of log messages. The following are the common logging levels used in most logging frameworks:
+
+TRACE - The most detailed level, used for debugging purposes to provide detailed information about the application's execution.
+
+DEBUG - Used to provide information about the application's behavior that is helpful in diagnosing issues.
+
+INFO - Used to provide information about the application's normal operation and to track the progress of certain tasks.
+
+WARNING - Used to indicate a potential issue that should be investigated.
+
+ERROR - Used to indicate a significant issue that requires immediate attention.
+
+FATAL - The least common level, used to indicate a critical issue that will cause the application to fail.
+
+In general, it's a good practice to start with logging at the INFO level and increase the level as needed when diagnosing issues. It's also important to configure the logging level properly to ensure that the right amount of information is logged for the appropriate use case, such as debugging, analysis, or reporting.
+
+
+
+
+
 
 
 
